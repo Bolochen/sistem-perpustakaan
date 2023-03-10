@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nim')->unique();
             $table->string('nama');
+            $table->string('email');
             $table->string('alamat');
             $table->string('image')->nullable();
             $table->timestamps();
