@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('pinjamkembalis', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('nim_mahasiswa');
+            $table->foreignId('buku_id');
+            $table->date('tgl_pinjam');
+            $table->date('tgl_tempo');
+            $table->date('tgl_kembali')->nullable();
             $table->timestamps();
         });
     }
