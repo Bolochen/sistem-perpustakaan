@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pinjamkembalis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('nim_mahasiswa');
+            $table->foreignId('mahasiswa_id');
             $table->foreignId('buku_id');
             $table->date('tgl_pinjam');
             $table->date('tgl_tempo');
