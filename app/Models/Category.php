@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function bukus()
+    {
+        return $this->hasMany(Buku::class);
+    }
 }

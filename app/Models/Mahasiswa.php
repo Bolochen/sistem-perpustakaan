@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Mahasiswa extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function pinjamkembalis()
+    {
+        $this->hasMany(Pinjamkembali::class);
+    }
 }
