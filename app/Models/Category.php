@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $fillable = ['nama'];
 
     public function bukus()
     {

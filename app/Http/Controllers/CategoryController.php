@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.category.create');
     }
 
     /**
@@ -31,7 +31,13 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required'
+        ]);
+
+        Category::create($validatedData);
+
+        return redirect('/dashboard/category')->with('success', 'New category has been added!');
     }
 
     /**
@@ -47,7 +53,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('dashboard.category.edit', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -55,7 +63,14 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required'
+        ]);
+
+        Category::where('id', $category->id)
+                    ->update($validatedData);
+
+        return redirect('/dashboard/category')->with('success', 'Category has been updated');
     }
 
     /**
@@ -63,6 +78,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+
+        return redirect('/dashboard/category')->with('success', 'Category has been deleted');
     }
 }

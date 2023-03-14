@@ -26,5 +26,6 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
-Route::get('/dashboard/category', [CategoryController::class, 'index'])->middleware('auth');
+Route::resource('/dashboard/category', CategoryController::class)->middleware('auth');
+
 

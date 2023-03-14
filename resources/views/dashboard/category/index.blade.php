@@ -5,6 +5,12 @@
   <h1 class="h2">List category</h1>
 </div>
 
+@if (session()->has('success'))
+  <div class="alert alert-secondary col-lg-6" role="alert">
+    {{ session('success') }}
+  </div>
+@endif
+
     <div class="table-responsive col-lg-9">
         <a href="/dashboard/category/create" class="btn btn-primary mb-3">Create new category</a>
         <table class="table table-bordered">
@@ -20,7 +26,16 @@
         <tr>
             <th scope="row">{{ $loop->iteration }}</th>
             <td>{{ $category->nama }}</td>
-            <td>Otto</td>
+            <td>
+                <a href="/dashboard/category/{{ $category->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
+                <form action="/dashboard/category/{{ $category->id }}" method="post" class="d-inline">
+                  @method('delete')
+                  @csrf
+                  <button class="badge bg-danger border-0" onclick="return confirm('Are you sure ?')">
+                  <span data-feather="minus-circle"></span>
+                </button>
+                </form>
+              </td>
         </tr> 
         @endforeach
     </div>
