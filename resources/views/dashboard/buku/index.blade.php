@@ -42,5 +42,9 @@
               </td>
         </tr> 
         @endforeach
+        <div class="d-flex justify-content-end">
+          {{ $bukus->links() }}
+        </div>
     </div>
 @endsection
+

@@ -15,7 +15,7 @@ class BukuController extends Controller
     public function index()
     {
         return view('dashboard.buku.index', [
-            "bukus" => Buku::all()
+            "bukus" => Buku::paginate(10)
         ]);
     }
 
