@@ -74,6 +74,8 @@ class BukuController extends Controller
      */
     public function destroy(Buku $buku)
     {
-        //
+        Buku::destroy($buku->id);
+
+        return redirect('/dashboard/buku')->with('sucess','Book has been deleted');
     }
 }
