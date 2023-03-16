@@ -58,7 +58,10 @@ class BukuController extends Controller
      */
     public function edit(Buku $buku)
     {
-        //
+        return view('dashboard.buku.edit', [
+            'buku' => $buku,
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -66,7 +69,15 @@ class BukuController extends Controller
      */
     public function update(UpdateBukuRequest $request, Buku $buku)
     {
-        //
+        $validatedData = $request->validate([
+            'category_id' => 'required',
+            'title' => 'required|max:255',
+            'status' => 'required'
+        ]);
+
+        Buku::where('id', $buku->id)->update($validatedData);
+
+        return redirect('/dashboard/buku')->with('success', 'Book has been updated');
     }
 
     /**
