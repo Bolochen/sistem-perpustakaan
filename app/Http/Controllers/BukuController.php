@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
+use App\Models\Category;
 use App\Http\Requests\StoreBukuRequest;
 use App\Http\Requests\UpdateBukuRequest;
 
@@ -23,7 +24,9 @@ class BukuController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.buku.create', [
+            "categories" => Category::all()
+        ]);
     }
 
     /**
@@ -31,7 +34,15 @@ class BukuController extends Controller
      */
     public function store(StoreBukuRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'category_id' => 'required',
+            'title' => 'required|max:255',
+            'status' => 'required'
+        ]);
+
+        Buku::create($validatedData);
+
+        return redirect('/dashboard/buku')->with('success', 'New Book has been created');
     }
 
     /**

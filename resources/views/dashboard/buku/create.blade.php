@@ -9,28 +9,33 @@
         <form method="post" action="/dashboard/buku" class="mb-5">
             @csrf   
             <div class="mb-3">
-              <label for="name" class="form-label">Book's Title</label>
-              <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required autofocus value="{{ old('nama') }}">
-              @error('nama')
+              <label for="title" class="form-label">Book's Title</label>
+              <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required autofocus value="{{ old('title') }}">
+              @error('title')
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div>
               @enderror
-              <label for="name" class="form-label">Kategori</label>
-              <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required autofocus value="{{ old('nama') }}">
-              @error('nama')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-              @enderror
-              <label for="name" class="form-label">Status</label>
-              <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required autofocus value="{{ old('nama') }}">
-              @error('nama')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-              @enderror
-            </div>             
+            </div>  
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" name="category_id">
+                    @foreach ($categories as $category)
+                        @if (old('category_id') == $category->id)
+                            <option value="{{ $category->id }}" selected >{{ $category->nama }}</option>    
+                        @else
+                            <option value="{{ $category->id }}">{{ $category->nama }}</option>  
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-select" name="status">
+                            <option value="Tersedia" selected >Tersedia</option>    
+                            <option value="Dipinjam">Dipinjam</option>  
+                </select>
+            </div>           
             <button type="submit" class="btn btn-primary">Create Category</button>
           </form>
     </div>    
