@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
@@ -27,5 +28,6 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::resource('/dashboard/category', CategoryController::class)->middleware('auth');
+Route::resource('/dashboard/buku', BukuController::class)->middleware('auth');
 
 
