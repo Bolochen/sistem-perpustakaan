@@ -7,8 +7,8 @@
             <h2 class="mb-3">Profil : {{ $mahasiswa->nama }}</h2>
 
                 <a href="/dashboard/mahasiswa" class="btn btn-success"><span data-feather="arrow-left"></span> Back to all mahasiswa</a>
-                <a href="/dashboard/mahasiswa/{{ $mahasiswa->id }}/edit" class="btn btn-warning"><span data-feather="edit"></span> Edit</a>
-                <form action="/dashboard/mahasiswa/{{ $mahasiswa->id }}" method="post" class="d-inline">
+                <a href="/dashboard/mahasiswa/{{ $mahasiswa->nim }}/edit" class="btn btn-warning"><span data-feather="edit"></span> Edit</a>
+                <form action="/dashboard/mahasiswa/{{ $mahasiswa->nim }}" method="post" class="d-inline">
                     @method('delete')
                     @csrf
                     <button class="btn btn-danger" onclick="return confirm('Are you sure ?')">

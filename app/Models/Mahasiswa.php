@@ -15,4 +15,9 @@ class Mahasiswa extends Model
     {
         $this->hasMany(Pinjamkembali::class);
     }
+
+    public function getRouteKeyName(): string
+    {
+        return 'nim';
+    }
 }

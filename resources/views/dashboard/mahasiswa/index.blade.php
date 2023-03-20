@@ -29,9 +29,9 @@
             <td>{{ $mahasiswa->nim }}</td>
             <td>{{ $mahasiswa->nama }}</td>
             <td>
-                <a href="/dashboard/mahasiswa/{{ $mahasiswa->id }}" class="badge bg-success"><span data-feather="zoom-in"></span></a>
-                <a href="/dashboard/mahasiswa/{{ $mahasiswa->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
-                <form action="/dashboard/mahasiswa/{{ $mahasiswa->id }}" method="post" class="d-inline">
+                <a href="/dashboard/mahasiswa/{{ $mahasiswa->nim }}" class="badge bg-success"><span data-feather="zoom-in"></span></a>
+                <a href="/dashboard/mahasiswa/{{ $mahasiswa->nim }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
+                <form action="/dashboard/mahasiswa/{{ $mahasiswa->nim }}" method="post" class="d-inline">
                   @method('delete')
                   @csrf
                   <button class="badge bg-danger border-0" onclick="return confirm('Are you sure ?')">
