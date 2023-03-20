@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mahasiswa;
 use App\Http\Requests\StoreMahasiswaRequest;
 use App\Http\Requests\UpdateMahasiswaRequest;
+use Illuminate\Support\Facades\Storage;
 
 class MahasiswaController extends Controller
 {
@@ -73,7 +74,24 @@ class MahasiswaController extends Controller
      */
     public function update(UpdateMahasiswaRequest $request, Mahasiswa $mahasiswa)
     {
-        //
+        $validatedData = $request->validate([
+            'nim' => 'required',
+            'nama' => 'required',
+            'email' => 'required|email',
+            'alamat' => 'required',
+            'image' => 'image|file|max:1024'
+        ]);
+
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('foto-mahasiswa');
+        }
+
+        Mahasiswa::where('id', $mahasiswa->id)->update($validatedData);
+
+        return redirect('/dashboard/mahasiswa')->with('success', 'Mahasiswa has been updated');
     }
 
     /**
