@@ -99,6 +99,12 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
-        //
+        if($mahasiswa->image) {
+            Storage::delete($mahasiswa->image);
+        }
+        
+        Mahasiswa::destroy($mahasiswa->id);
+
+        return redirect('/dashboard/mahasiswa')->with('success', 'Mahasiswa has been deleted');
     }
 }
