@@ -13,7 +13,9 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.mahasiswa.index',[
+            'mahasiswas' => Mahasiswa::orderBy('nim', 'ASC')->paginate(10)
+        ]);
     }
 
     /**
@@ -21,7 +23,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.mahasiswa.create');
     }
 
     /**
@@ -29,7 +31,21 @@ class MahasiswaController extends Controller
      */
     public function store(StoreMahasiswaRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nim' => 'required',
+            'nama' => 'required',
+            'email' => 'required|email',
+            'alamat' => 'required',
+            'image' => 'image|file|max:1024'
+        ]);
+
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('foto-mahasiswa');
+        }
+
+        Mahasiswa::create($validatedData);
+
+        return redirect('/dashboard/mahasiswa')->with('success', 'Mahasiswa has been inserted');
     }
 
     /**
@@ -37,7 +53,9 @@ class MahasiswaController extends Controller
      */
     public function show(Mahasiswa $mahasiswa)
     {
-        //
+        return view('dashboard.mahasiswa.show',[
+            'mahasiswa' => $mahasiswa
+        ]);
     }
 
     /**
@@ -45,7 +63,9 @@ class MahasiswaController extends Controller
      */
     public function edit(Mahasiswa $mahasiswa)
     {
-        //
+        return view('dashboard.mahasiswa.edit',[
+            'mahasiswa' => $mahasiswa
+        ]);
     }
 
     /**

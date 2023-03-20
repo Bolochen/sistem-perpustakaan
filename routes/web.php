@@ -5,6 +5,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MahasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 
 Route::resource('/dashboard/category', CategoryController::class)->middleware('auth');
 Route::resource('/dashboard/buku', BukuController::class)->middleware('auth');
+Route::resource('/dashboard/mahasiswa', MahasiswaController::class)->middleware('auth');
 
 
