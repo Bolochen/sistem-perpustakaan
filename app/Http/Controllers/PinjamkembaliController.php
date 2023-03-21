@@ -65,6 +65,8 @@ class PinjamkembaliController extends Controller
      */
     public function destroy(Pinjamkembali $pinjamkembali)
     {
-        //
+        Pinjamkembali::destroy($pinjamkembali->id);
+
+        return redirect('/dashboard/pinjamkembali')->with('success', 'Pinjam kembali has been deleted');
     }
 }
