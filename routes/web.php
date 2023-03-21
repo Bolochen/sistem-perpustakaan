@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PinjamkembaliController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::resource('/dashboard/category', CategoryController::class)->middleware('auth');
 Route::resource('/dashboard/buku', BukuController::class)->middleware('auth');
 Route::resource('/dashboard/mahasiswa', MahasiswaController::class)->middleware('auth');
+Route::resource('/dashboard/pinjamkembali', PinjamkembaliController::class)->middleware('auth');
 
 

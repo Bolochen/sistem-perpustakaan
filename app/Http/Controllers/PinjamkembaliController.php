@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pinjamkembali;
+use App\Models\Mahasiswa;
+use App\Models\Buku;
 use App\Http\Requests\StorePinjamkembaliRequest;
 use App\Http\Requests\UpdatePinjamkembaliRequest;
 
@@ -13,7 +15,9 @@ class PinjamkembaliController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.pinjam.index',[
+            'pinjamkembalis' => Pinjamkembali::with(['mahasiswa', 'buku'])->orderBy('tgl_kembali', 'ASC')->orderBy('tgl_tempo', 'ASC')->paginate('20')
+        ]);
     }
 
     /**

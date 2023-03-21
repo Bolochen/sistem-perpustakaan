@@ -13,11 +13,11 @@ class Pinjamkembali extends Model
 
     public function mahasiswa()
     {
-        $this->belongsTo(Mahasiswa::class);
+        return $this->belongsTo(Mahasiswa::class);
     }
 
     public function buku()
     {
-        $this->belongsTo(Buku::class);
+        return $this->belongsTo(Buku::class);
     }
 }

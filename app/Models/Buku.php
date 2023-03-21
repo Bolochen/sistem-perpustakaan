@@ -15,4 +15,9 @@ class Buku extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function pinjamkembali()
+    {
+        return $this->hasMany(Pinjamkembali::class);
+    }
 }

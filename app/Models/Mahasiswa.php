@@ -11,9 +11,9 @@ class Mahasiswa extends Model
 
     protected $guarded = ['id'];
 
-    public function pinjamkembalis()
+    public function pinjamkembali()
     {
-        $this->hasMany(Pinjamkembali::class);
+        return $this->hasMany(Pinjamkembali::class);
     }
 
     public function getRouteKeyName(): string
