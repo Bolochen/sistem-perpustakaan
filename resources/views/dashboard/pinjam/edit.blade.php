@@ -23,7 +23,7 @@
                     </div>
                 @enderror
             </div>     
-            <button type="submit" class="btn btn-primary">Create Pinjaman</button>
+            <button type="submit" class="btn btn-primary">Kembalikan buku</button>
           </form>
     </div>
 @endsection

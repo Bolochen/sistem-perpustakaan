@@ -77,7 +77,15 @@ class PinjamkembaliController extends Controller
      */
     public function update(UpdatePinjamkembaliRequest $request, Pinjamkembali $pinjamkembali)
     {
-        //
+        $validatedData = $request->validate([
+            'tgl_kembali' => 'required|date'
+        ]);
+
+        Pinjamkembali::where('id', $pinjamkembali->id)->update($validatedData);
+
+        Buku::where('id', $pinjamkembali->buku_id)->update(['status' => 'Tersedia']);
+
+        return redirect('/dashboard/pinjamkembali')->with('success', 'Berhasil dikembalikan');
     }
 
     /**
