@@ -25,7 +25,10 @@ class PinjamkembaliController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.pinjam.create',[
+            'mahasiswas' => Mahasiswa::orderBy('nim', 'ASC')->get(),
+            'bukus' => Buku::where('status', 'Tersedia')->orderBy('title', 'ASC')->get()
+        ]);
     }
 
     /**
@@ -33,7 +36,22 @@ class PinjamkembaliController extends Controller
      */
     public function store(StorePinjamkembaliRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'mahasiswa_id' => 'required',
+            'buku_id' => 'required',
+            'tgl_pinjam' => 'required|date',
+            'tgl_tempo' => 'required|date'
+        ]);
+
+        // $validatedData['tgl_pinjam'] = now();
+        // $validatedData['tgl_tempo'] = strtotime("+1 week");
+
+        Pinjamkembali::create($validatedData);
+
+        Buku::where('id', $request->buku_id)->update(['status' => 'Dipinjam']);
+
+        return redirect('/dashboard/pinjamkembali')->with('success', 'Berhasil disimpan');
+        
     }
 
     /**

@@ -12,7 +12,7 @@
 @endif
 
     <div class="table-responsive col-lg-11">
-        <a href="/dashboard/mahasiswa/create" class="btn btn-primary mb-3">Tambah pinjaman buku</a>
+        <a href="/dashboard/pinjamkembali/create" class="btn btn-primary mb-3">Tambah pinjaman buku</a>
         <table class="table table-bordered">
         <thead>
         <tr class="table-primary">
