@@ -48,7 +48,7 @@
             @endif
 
             <td>
-                <a href="/dashboard/pinjamkembali/{{ $pinjamkembali->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
+                
                 @if ($pinjamkembali->tgl_kembali !== null)
                 <form action="/dashboard/pinjamkembali/{{ $pinjamkembali->id }}" method="post" class="d-inline">
                     @method('delete')
@@ -57,6 +57,8 @@
                     <span data-feather="minus-circle"></span>
                   </button>
                 </form>
+                @else
+                <a href="/dashboard/pinjamkembali/{{ $pinjamkembali->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
                 @endif
                 
               </td>
