@@ -67,7 +67,9 @@ class PinjamkembaliController extends Controller
      */
     public function edit(Pinjamkembali $pinjamkembali)
     {
-        //
+        return view('dashboard.pinjam.edit',[
+            'pinjamkembali' => $pinjamkembali
+        ]);
     }
 
     /**
